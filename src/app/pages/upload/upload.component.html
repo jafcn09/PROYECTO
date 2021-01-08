@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-md-6">
+      <div class="card">
+          <div class="card-body">
+              <h4 class="card-title">Informacion Del Usuario</h4>
+              <h6 class="card-subtitle">Ajustes</h6>
+              <form class="form p-t-20" id="perfil" autocomplete="off" [formGroup]="perfil"
+                  (ngSubmit)="actualizarPerfil()">
+                  <div class="form-group">
+                      <label class="control-label">Nombre</label>
+                      <input type="text" id="nombre" class="form-control"
+                          formControlName="nombre" placeholder="Nombre"
+                          [ngClass]="{ 'is-invalid': isValidf('nombre') }">
+                      <div class="invalid-feedback">
+                          <span *ngIf="perfil.get('nombre').errors?.required">
+                             *Este campo es obligatorio
+                          </span>
+                          <span *ngIf="perfil.get('nombre').errors?.minlength">
+                              *Debe tener minimo 5 caracteres*
+                          </span>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="control-label">Correo</label>
+                      <input type="text" id="email" class="form-control"
+                          formControlName="email" placeholder="example@example.com"
+                          [ngClass]="{ 'is-invalid': isValidf('email') }" [readOnly]="usuario.google">
+                      <div class="invalid-feedback">
+                          <span *ngIf="perfil.get('email').errors?.required">
+                              * Ponga su correo
+                          </span>
+                          <span *ngIf="perfil.get('email').errors?.pattern">
+                              *Invalido
+                          </span>
+                      </div>
+                  </div>
+                  <button type="submit" [disabled]="perfil.invalid" class="btn btn-inverse btn-block waves-effect waves-light">
+                      <i class="fa fa-save"></i>
+                      Guardar
+                  </button>
+
+              </form>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-6">
+      <div class="card">
+          <div class="card-body">
+              <h4 class="card-title">Avatar</h4>
+              <h6 class="card-subtitle">Imagen del usuario</h6>
+              <!-- <div class="col-lg-3 col-md-6"> -->
+                  <div class="card">
+                      <div class="text-center">
+                          <img class="card-img-top img-responsive img-avatar" [src]="usuario.FotoUrl" class="im-avatar" *ngIf="!imgTemp">
+                          <img class="card-img-top img-responsive img-avatar" [src]="imgTemp">
+                      </div>
+                  </div>
+              <!-- </div> -->
+              <input type="file" (change)="cambiarFoto($event.target.files[0])">
+              <br>
+              <br>
+              <button type="button" class="btn btn-inverse btn-block waves-effect waves-light" [disabled]="!subirFoto" (click)="onSubirFoto()">
+                  <i class="fa fa-save"></i>
+                  Modificar foto
+              </button>
+          </div>
+      </div>
+  </div>
+</div>
