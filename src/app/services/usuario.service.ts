@@ -1,6 +1,7 @@
+import { Usuario } from './../model/usuario';
+import { cargar } from './../interfaz/cargar-usuario-interface';
 import { Injectable, NgZone } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Usuario } from '../model/usuario';
 import { environment } from '../../environments/environment';
 import { Observable, of } from 'rxjs';
 import { tap,map, catchError } from 'rxjs/operators';
@@ -29,6 +30,13 @@ export class UsuarioService {
   }
   get uid(): string {
     return this.usuario.uid || '';
+  }
+  get headers(){
+    return{
+      headers:{
+        'x-token': this.token
+      }
+    }
   }
   /**
    * @returns Observable
@@ -72,18 +80,13 @@ export class UsuarioService {
    * @param  {string}} role
    * @returns Observable
    */
-  actualizarUsuario(data: { email: string, nombre: string, role: string }): Observable<any> {
-    data = {
-      ...data,
-      role: this.usuario.role
+  actualizarUsuario(data: { email: string, nombre: string, role: string }){
+data = {
+  ...data,
+  role: this.usuario.role
+}
+    return this.http.put(`${base_url}/usuarios/${this.uid}`, data, this.headers); {
     }
-    const httpHeaders = new HttpHeaders({
-      'x-token': this.token,
-      'Content-Type': 'application/json'
-    });
-    return this.http.put(`${base_url}/usuarios/${this.uid}`, data, {
-      headers: httpHeaders
-    })
   }
   /**
    * @param  {Usuario} usuario
@@ -136,4 +139,19 @@ export class UsuarioService {
       });
     });
   }
+  cargarUsuarios(todo: number= 0){
+    //loalhost:3005/api/usuarios=todo=0
+
+    const url = `${base_url}/usuarios?todo=${todo}`;
+return this.http.get<cargar>(url, this.headers);
+
+
+  }
+  eliminarUsuario( usuario: Usuario ) {
+    const url = `${base_url}/usuarios/${usuario.uid}`;
+    return this.http.delete(url, this.headers);
+}
+guardarUsuario(usuario: Usuario){
+  return this.http.put(`${base_url}/usuarios/${usuario.uid}`, usuario, this.headers )
+}
 }

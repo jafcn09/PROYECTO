@@ -25,6 +25,21 @@ export class SidebarService {
           titulo: 'RxJs', url: 'rxjs'
         }
       ]
+    },
+    {
+      titulo: 'Mantenimiento', /**cambia el nombre de menu */
+      icono: 'mdi mdi-folder',
+      submenu: [
+        {
+          titulo: 'Usuario', url: 'usuario'
+        },
+        {
+          titulo: 'Hospital', url: 'hospitales'
+        },
+        {
+          titulo: 'Medico', url: 'medicos'
+        },
+      ]
     }
   ]
 

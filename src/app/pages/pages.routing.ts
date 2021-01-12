@@ -9,6 +9,9 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { UploadComponent } from './upload/upload.component';
+import { UsuarioComponent } from './mantenimientos/usuario/usuario.component';
+import { HospitalComponent } from './mantenimientos/hospital/hospital.component';
+import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 
 const routes: Routes = [
   {
@@ -22,7 +25,11 @@ const routes: Routes = [
       { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajuste de Temas'} },
       { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas'} },
       { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs'} },
- {path:'perfil', component: UploadComponent,data:{titulo:'Perfil'}}
+ {path:'perfil', component: UploadComponent,data:{titulo:'Perfil'}},
+ //Mantenimiento de la clinica
+ {path:'usuario', component: UsuarioComponent, data:{titulo: 'Usuario'}},
+ {path:'hospitales', component: HospitalComponent, data:{titulo: 'Hospital'}},
+ {path:'medicos', component:MedicosComponent, data:{titulo:'Medico'}}
     ]
   }
 ];

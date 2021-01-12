@@ -15,6 +15,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { UploadComponent } from './upload/upload.component';
+import { UsuarioComponent } from './mantenimientos/usuario/usuario.component';
+import { HospitalComponent } from './mantenimientos/hospital/hospital.component';
+import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import { UploadComponent } from './upload/upload.component';
     AccountSettingsComponent,
     PromesasComponent,
     RxjsComponent,
-    UploadComponent
+    UploadComponent,
+    UsuarioComponent,
+    HospitalComponent,
+    MedicosComponent
   ],
 
   exports: [

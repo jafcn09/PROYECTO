@@ -18,3 +18,13 @@
   height: 100px;
   width: 100px;
 }
+.w100{
+  width:100px;
+}
+.avatar{
+  border-radius:100%;
+  width:20%;
+}
+.control{
+  width: 150px;
+}
